@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Despliegue del backend en Hostinger (hosting compartido / Cloud con SSH).
-# Uso, desde el servidor:  bash ~/maps-reus/backend/deploy/deploy.sh
+# Uso, desde el servidor:  bash ~/domains/backend.jumechi-soft.com/maps-reus/backend/deploy/deploy.sh
 # Es seguro repetirlo: cada vez actualiza el código y las cachés.
 set -euo pipefail
 
-REPO_DIR="$HOME/maps-reus"
+# El repo es la carpeta dos niveles por encima de este script (backend/deploy/deploy.sh).
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 APP_DIR="$REPO_DIR/backend"
 PHP="${PHP:-php}"
 

@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+use IlluminateFoundationApplication;
+use IlluminateHttpRequest;
 
 define('LARAVEL_START', microtime(true));
 
-// Igual que api.jumechi-soft.com: la app Laravel vive fuera de la carpeta pública.
-$app_dir = '/home/u743095127/maps-reus/backend';
+// Igual que api.jumechi-soft.com: la app Laravel vive junto a public_html, fuera de la parte pública.
+// domains/backend.jumechi-soft.com/{public_html, maps-reus/backend}
+$app_dir = __DIR__.'/../maps-reus/backend';
 
 if (file_exists($maintenance = $app_dir.'/storage/framework/maintenance.php')) {
     require $maintenance;
