@@ -1,0 +1,12 @@
+# Netlify publica el frontend (carpeta frontend/) con SSR de TanStack Start en Netlify Functions.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Sin esto, la configuración de Lovable compila para Cloudflare.
+  NITRO_PRESET = "netlify"
+  # API en Hostinger. Se incrusta al compilar: si cambia, hay que volver a desplegar.
+  VITE_REUS_API_URL = "https://backend.jumechi-soft.com/api/v1/reus"

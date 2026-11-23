@@ -38,3 +38,6 @@ dist-ssr
 
 # Respaldo de la limpieza (se puede borrar)
 _respaldo-limpieza/
+
+# Salida de compilación para Netlify
+.netlify/
