@@ -1,0 +1,4 @@
+# Archivos del sistema y de editores (cada proyecto tiene además su propio .gitignore)
+.DS_Store
+Thumbs.db
+desktop.ini
