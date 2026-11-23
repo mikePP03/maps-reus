@@ -39,18 +39,24 @@ bash ~/maps-reus/backend/deploy/deploy.sh
 La primera vez crea `backend/.env` a partir de `deploy/hostinger.env.example` y genera `APP_KEY`.
 Revisa que `APP_URL` sea `https://backend.jumechi-soft.com`.
 
-## 5. Apuntar el subdominio a `backend/public`
+## 5. Carpeta pública del subdominio
 
-Sustituye la carpeta del subdominio por un enlace a `backend/public` (usa la ruta que anotaste en
-el paso 1.1):
+Igual que `api.jumechi-soft.com`: la app Laravel vive fuera de la carpeta pública y esta solo tiene
+`index.php`, `.htaccess`, `favicon.ico` y `robots.txt`. La carpeta del subdominio es
+`~/domains/jumechi-soft.com/public_html/backend` (la página de muestra de Hostinger quedó en
+`backend_original`).
 
-```bash
-SUB=~/domains/jumechi-soft.com/public_html/backend
-mv "$SUB" "${SUB}_original"
-ln -s ~/maps-reus/backend/public "$SUB"
-```
+1. Copia `.htaccess`, `favicon.ico` y `robots.txt` desde `~/maps-reus/backend/public/`.
+2. Sube como `index.php` el de [`public-index.php`](public-index.php), que carga la app desde
+   `/home/u743095127/maps-reus/backend` (súbelo con `scp`: escribirlo en una línea de `ssh` pierde
+   las comillas).
 
 Comprueba: `https://backend.jumechi-soft.com/api/v1/plana/feed` debe responder con JSON.
+
+## DNS (Netlify)
+
+El dominio usa los DNS de Netlify, así que el subdominio se declara allí, como `api`:
+`CNAME backend → backend.jumechi-soft.com.cdn.hstgr.net`.
 
 ## 6. Tareas programadas (cron)
 
